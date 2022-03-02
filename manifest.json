@@ -2,7 +2,7 @@
   "description": "No Direct IP",
   "manifest_version": 2,
   "name": "no-direct-ip",
-  "version": "1.0",
+  "version": "0.1",
   "homepage_url": "https://github.com/OllieJC/firefox-no-direct-ip",
   "icons": {
     "48": "icons/block.svg"
