@@ -1,10 +1,11 @@
 {
   "name": "no-direct-ip",
-  "version": "0.2.0",
-  "description": "This basic extension blocks all external / public IP v4 and v6 addresses.",
+  "version": "0.2.1",
+  "description": "Block directly entered, external or public IP v4 and v6 addresses",
   "main": "background.js",
   "files": [
     "background.js",
+    "service_worker.js",
     "LICENSE",
     "icons/*",
     "resources/*",
@@ -13,9 +14,10 @@
   ],
   "scripts": {
     "test": "jest",
-    "lint": "eslint background.js resources/",
-    "fix": "eslint --fix background.js resources/",
-    "pack": "npm-pack-zip"
+    "lint": "eslint background.js service_worker.js resources/",
+    "fix": "eslint --fix background.js service_worker.js resources/",
+    "pack-v2": "copy manifest-v2.json manifest.json && npm-pack-zip --ver --dst build/v2/ && del manifest.json",
+    "pack-v3": "copy manifest-v3.json manifest.json && npm-pack-zip --ver --dst build/v3/ && del manifest.json"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,33 @@
+{
+  "description": "Block directly entered, external or public IP v4 and v6 addresses",
+  "manifest_version": 3,
+  "name": "no-direct-ip",
+  "version": "0.2.1",
+  "homepage_url": "https://github.com/OllieJC/no-direct-ip",
+  "icons": {
+    "48": "icons/block.svg",
+    "96": "icons/block.svg"
+  },
+  "declarative_net_request" : {
+    "rule_resources" : []
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [ "icons/*" ],
+      "use_dynamic_url": true
+    }, {
+      "resources": [ "resources/*" ],
+      "use_dynamic_url": true
+    }
+  ]
+}

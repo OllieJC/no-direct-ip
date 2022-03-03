@@ -1,2 +1,4 @@
-*.zip
 node_modules/
+build/v2/
+build/v3/
+manifest.json
