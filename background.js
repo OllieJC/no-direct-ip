@@ -1,3 +1,9 @@
+/* global browser, chrome, module */
+
+if (typeof (chrome) !== 'undefined') {
+  browser = chrome
+}
+
 function isPrivateIPv4 (ip) {
   const parts = ip.split('.')
   const result = (parts[0] === '10' || parts[0] === '127' ||
@@ -47,21 +53,23 @@ function checkIp (details) {
 
   if (cancel) {
     console.log(`no-direct-ip: blocked access to ${ipType} address: ${hostname}`)
+    if (typeof (browser) !== 'undefined') {
+      return { redirectUrl: browser.runtime.getURL('resources/blocked.html?hostname=' + hostname) }
+    }
   }
 
   return { cancel: cancel }
 }
 
-/*eslint-disable */
-if (typeof(browser) != "undefined") {
+if (typeof (browser) !== 'undefined') {
   browser.webRequest.onBeforeRequest.addListener(
     checkIp,
-    {urls: ["<all_urls>"]},
-    ["blocking"]
-  );
+    { urls: ['<all_urls>'] },
+    ['blocking']
+  )
+  console.log('no-direct-ip: added listener to browser')
 }
 
-if (typeof(module) != "undefined") {
-  module.exports = checkIp;
+if (typeof (module) !== 'undefined') {
+  module.exports = checkIp
 }
-/* eslint-enable */

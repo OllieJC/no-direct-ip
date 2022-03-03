@@ -11,5 +11,11 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
+    "no-global-assign": [
+      "error", {"exceptions": ["browser", "chrome", "module"]}
+    ],
+    "no-unused-vars": [
+      "off"
+    ]
   }
 }

@@ -1,24 +1,26 @@
 {
-  "description": "No Direct IP",
+  "description": "no-direct-ip",
   "manifest_version": 2,
   "name": "no-direct-ip",
-  "version": "0.1",
-  "homepage_url": "https://github.com/OllieJC/firefox-no-direct-ip",
+  "version": "0.2.0",
+  "homepage_url": "https://github.com/OllieJC/no-direct-ip",
   "icons": {
-    "48": "icons/block.svg"
+    "48": "icons/block.svg",
+    "96": "icons/block.svg"
   },
-
   "permissions": [
     "webRequest", "webRequestBlocking", "<all_urls>"
   ],
-
   "background": {
     "scripts": ["background.js"]
   },
-
   "browser_specific_settings": {
     "gecko": {
       "strict_min_version": "57.0a1"
     }
-  }
+  },
+  "web_accessible_resources": [
+    "resources/*",
+    "icons/*"    
+  ]
 }

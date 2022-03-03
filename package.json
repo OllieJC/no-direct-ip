@@ -1,28 +1,39 @@
 {
-  "name": "firefox-no-direct-ip",
-  "version": "0.1.1",
-  "description": "This basic Firefox extension blocks all external / public IP v4 and v6 addresses.",
+  "name": "no-direct-ip",
+  "version": "0.2.0",
+  "description": "This basic extension blocks all external / public IP v4 and v6 addresses.",
   "main": "background.js",
+  "files": [
+    "background.js",
+    "LICENSE",
+    "icons/*",
+    "resources/*",
+    "manifest.json",
+    "README.md"
+  ],
   "scripts": {
     "test": "jest",
-    "lint": "eslint background.js"
+    "lint": "eslint background.js resources/",
+    "fix": "eslint --fix background.js resources/",
+    "pack": "npm-pack-zip"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OllieJC/firefox-no-direct-ip.git"
+    "url": "git+https://github.com/OllieJC/no-direct-ip.git"
   },
   "author": "OllieJC",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/OllieJC/firefox-no-direct-ip/issues"
+    "url": "https://github.com/OllieJC/no-direct-ip/issues"
   },
-  "homepage": "https://github.com/OllieJC/firefox-no-direct-ip#readme",
+  "homepage": "https://github.com/OllieJC/no-direct-ip#readme",
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "npm-pack-zip": "^1.3.0"
   }
 }
