@@ -12,15 +12,16 @@
     "webRequest", "webRequestBlocking", "<all_urls>"
   ],
   "background": {
-    "scripts": ["background.js"]
+    "page": "background/page.html"
   },
   "browser_specific_settings": {
     "gecko": {
-      "strict_min_version": "57.0a1"
+      "strict_min_version": "68"
     }
   },
   "web_accessible_resources": [
     "resources/*",
+    "background/*",
     "icons/*"
   ]
 }

@@ -2,9 +2,8 @@
   "name": "no-direct-ip",
   "version": "0.2.1",
   "description": "Block directly entered, external or public IP v4 and v6 addresses",
-  "main": "background.js",
   "files": [
-    "background.js",
+    "background/*",
     "service_worker.js",
     "LICENSE",
     "icons/*",
@@ -14,10 +13,10 @@
   ],
   "scripts": {
     "test": "jest",
-    "lint": "eslint background.js service_worker.js resources/",
-    "fix": "eslint --fix background.js service_worker.js resources/",
-    "pack-v2": "copy manifest-v2.json manifest.json && npm-pack-zip --ver --dst build/v2/ && del manifest.json",
-    "pack-v3": "copy manifest-v3.json manifest.json && npm-pack-zip --ver --dst build/v3/ && del manifest.json"
+    "lint": "eslint background/ resources/",
+    "fix": "eslint --fix background/ resources/",
+    "pack-v2": "copy manifest-v2.json manifest.json && npm-pack-zip --ver --dst build/v2/ ",
+    "pack-v3": "copy manifest-v3.json manifest.json && npm-pack-zip --ver --dst build/v3/"
   },
   "repository": {
     "type": "git",
@@ -30,6 +29,9 @@
   },
   "homepage": "https://github.com/OllieJC/no-direct-ip#readme",
   "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
