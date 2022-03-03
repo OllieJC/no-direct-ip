@@ -31,4 +31,4 @@ The following IP addresses are allowed:
 
 ## Version
 
-0.2.1
+0.2.2
