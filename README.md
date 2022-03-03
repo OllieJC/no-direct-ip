@@ -1,10 +1,14 @@
 # no-direct-ip
 
+[<img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" height="48" alt="Get on Firefox"/>](https://addons.mozilla.org/en-GB/addon/no-direct-ip/)
+
 ## What it does
 
-This basic extension blocks all external / public IP v4 and v6 addresses.
+This browser extension blocks external or public IP v4 and v6 addresses.
 
 ## Features
+
+Completely local with no external lookups or tracking.
 
 Multi-language support in the _blocked_ page (based of browser's language).
 
@@ -23,7 +27,7 @@ The following IP addresses are allowed:
 * ::1/128
 * fd00::/8
 
-## Screenshot
+## Screenshots
 
 <img src="screenshot-dark-mode-en.jpg" alt="Screenshot of the English blocked page in dark mode" width="450px"/>
 
