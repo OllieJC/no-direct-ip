@@ -1,6 +1,6 @@
 {
   "name": "no-direct-ip",
-  "version": "0.2.4",
+  "version": "0.2.3",
   "description": "Block directly entered, external or public IP v4 and v6 addresses",
   "scripts": {
     "test": "jest",
@@ -30,6 +30,6 @@
     "eslint-plugin-promise": "^5.2.0",
     "fs-extra": "^10.0.1",
     "jest": "^27.5.1",
-    "npm-pack-zip": "github:OllieJC/npm-pack-zip#master"
+    "npm-pack-zip": "^1.3.0"
   }
 }
