@@ -27,6 +27,8 @@ The following IP addresses are allowed:
 * ::1/128
 * fd00::/8
 
+Raise and upvote features in [Discussions](https://github.com/OllieJC/no-direct-ip/discussions). 
+
 ## Screenshots
 
 <img src="screenshot-dark-mode-en.jpg" alt="Screenshot of the English blocked page in dark mode" width="450px"/>
