@@ -7,7 +7,7 @@ describe('rules IPv6 tests', () => {
   test('cidrToRegex should generate an IPv4/8 bit regex correctly', () => {
     const r1 = rules.cidrToRegex("fd00::/8")
 
-    expect(r1).toEqual(/^(?:\w+:\/\/)?\[?fd[a-f0-9]*:+[a-f0-9:]+\]?(?:\:[0-9]+)?(?:\/|$)/i)
+    expect(r1).toEqual(/^(?:(?:https?|[a-z\.-]{2,36}):\/\/)?\[?fd[a-f0-9]{1,2}:[a-f0-9:]{1,35}\]?(?:\:\d{1,5})?(?:\/|$)/i)
 
     expect(r1.test("fd12:3456:789a:1::")).toEqual(true)
 
@@ -17,7 +17,7 @@ describe('rules IPv6 tests', () => {
   test('cidrToRegex should generate an IPv4/128 bit regex correctly', () => {
     const r1 = rules.cidrToRegex("::1/128")
 
-    expect(r1).toEqual(/^(?:\w+:\/\/)?\[?(?:[0:]+)+:0*1\]?(?:\:[0-9]+)?(?:\/|$)/i)
+    expect(r1).toEqual(/^(?:(?:https?|[a-z\.-]{2,36}):\/\/)?\[?[0:]{1,34}:0{0,3}1\]?(?:\:\d{1,5})?(?:\/|$)/i)
 
     expect(r1.test("::1")).toEqual(true)
     expect(r1.test("0:0:0:0:0:0:0:0001")).toEqual(true)

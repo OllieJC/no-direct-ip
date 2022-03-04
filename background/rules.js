@@ -77,10 +77,10 @@ export function cidrToRegex (cidr) {
     res += '\\[?'
     switch (mask) {
       case 128:
-        res += '(?:[0:]+)+:0*' + ipv6[ipv6.length - 1]
+        res += '[0:]{1,34}:0{0,3}' + ipv6[ipv6.length - 1]
         break
       case 8:
-        res += ipv6[0][0] + ipv6[0][1] + '[a-f0-9]*:+[a-f0-9:]+'
+        res += ipv6[0][0] + ipv6[0][1] + '[a-f0-9]{1,2}:[a-f0-9:]{1,35}'
         break
       default:
         throw new Error('IPv6 mask not implemented: ' + mask)
