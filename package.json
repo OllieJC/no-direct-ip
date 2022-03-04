@@ -1,22 +1,13 @@
 {
   "name": "no-direct-ip",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Block directly entered, external or public IP v4 and v6 addresses",
-  "files": [
-    "background/*",
-    "service_worker.js",
-    "LICENSE",
-    "icons/*",
-    "resources/*",
-    "manifest.json",
-    "README.md"
-  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint background/ resources/",
     "fix": "eslint --fix background/ resources/",
-    "pack-v2": "copy manifest-v2.json manifest.json && npm-pack-zip --ver --dst build/v2/ ",
-    "pack-v3": "copy manifest-v3.json manifest.json && npm-pack-zip --ver --dst build/v3/"
+    "pack-v2": "node ./build/script.js -v2 && npm-pack-zip --ver --src build/v2/ --dst build/v2/",
+    "pack-v3": "node ./build/script.js -v3 && npm-pack-zip --ver --src build/v3/ --dst build/v3/"
   },
   "repository": {
     "type": "git",
@@ -37,6 +28,7 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
+    "fs-extra": "^10.0.1",
     "jest": "^27.5.1",
     "npm-pack-zip": "^1.3.0"
   }

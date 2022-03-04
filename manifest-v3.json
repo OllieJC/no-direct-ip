@@ -2,7 +2,7 @@
   "description": "Block directly entered, external or public IP v4 and v6 addresses",
   "manifest_version": 3,
   "name": "no-direct-ip",
-  "version": "0.2.2",
+  "version": "0",
   "homepage_url": "https://github.com/OllieJC/no-direct-ip",
   "icons": {
     "48": "icons/block.svg",
