@@ -13,9 +13,8 @@ export function checkIp (details) {
       !/\.[a-z]/i.test(hostname) || hostname.indexOf(':') > -1
     )
   ) {
-    let shouldSkip = false
-    let ipRules = rules.getRules(true)
-    for (var i = 0; i < ipRules.length; i++) {
+    const ipRules = rules.getRules(true)
+    for (let i = 0; i < ipRules.length; i++) {
       if (ipRules[i][1].test(hostname)) {
         if (ipRules[i][0] === 'allow') {
           break
@@ -30,7 +29,7 @@ export function checkIp (details) {
   if (cancel) {
     console.log(`no-direct-ip: blocked access to: ${hostname}`)
     if (typeof (browser) !== 'undefined') {
-      let url = browser.runtime.getURL('resources/blocked.html?hostname=' + hostname)
+      const url = browser.runtime.getURL('resources/blocked.html?hostname=' + hostname)
       return { redirectUrl: url }
     }
   }
