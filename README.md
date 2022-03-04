@@ -1,6 +1,6 @@
 # no-direct-ip
 
-[<img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" height="48" alt="Get on Firefox"/>](https://addons.mozilla.org/en-GB/addon/no-direct-ip/)
+[<img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" height="48" alt="Get on Firefox"/>](https://addons.mozilla.org/en-GB/addon/no-direct-ip/)&nbsp;&nbsp;&nbsp;[<img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png" height="48" alt="Get on Chrome"/>](https://chrome.google.com/webstore/detail/no-direct-ip/hacaeeoapmdgmhifjcgbblcobgnmceff)
 
 ## What it does
 
