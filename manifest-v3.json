@@ -5,8 +5,8 @@
   "version": "0",
   "homepage_url": "https://github.com/OllieJC/no-direct-ip",
   "icons": {
-    "48": "icons/block.svg",
-    "96": "icons/block.svg"
+    "48": "icons/block.png",
+    "96": "icons/block.png"
   },
   "declarative_net_request" : {
     "rule_resources" : []
