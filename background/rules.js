@@ -30,9 +30,9 @@ function intRange (start, end) {
   ).fill().map((_, idx) => parseInt(start) + idx)
 }
 
-const regexStart = '^(?:(?:https?|[a-z\\.-]{2,36})://)?'
+const regexStart = '^(?:(?:https?|[a-z\\.-]+)://)?'
 const anyIPv4Octet = '(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
-const regexEnd = '(?:\\:\\d{1,5})?(?:\\/|$)'
+const regexEnd = '(?:\\:[0-9]+)?(?:\\/|$)'
 
 function cidrIPv4ToRegexString (cidr) {
   const range = calculateCidrIPv4Range(cidr)
@@ -79,10 +79,10 @@ export function cidrToRegex (cidr) {
     res += '\\[?'
     switch (mask) {
       case 128:
-        res += '[0:]{1,34}:0{0,3}' + ipv6[ipv6.length - 1]
+        res += '[0:]+:0*' + ipv6[ipv6.length - 1]
         break
       case 8:
-        res += ipv6[0][0] + ipv6[0][1] + '[a-f0-9]{1,2}:[a-f0-9:]{1,35}'
+        res += ipv6[0][0] + ipv6[0][1] + '[a-f0-9]+:[a-f0-9:]+'
         break
       default:
         throw new Error('IPv6 mask not implemented: ' + mask)
@@ -139,7 +139,7 @@ export function getRules (asRegexObj) {
   const ipv4CatchAll = regexStart + '(' + anyIPv4Octet + '\\.' + anyIPv4Octet + '\\.' + anyIPv4Octet + '\\.' + anyIPv4Octet + ')' + regexEnd
   res.push(['redirect', asRegexObj ? new RegExp(ipv4CatchAll) : ipv4CatchAll, 5])
 
-  const ipv6CatchAll = regexStart + '(\\[(?:[0-9:a-f]{1,4}:[0-9:a-f]{1,35})\\])' + regexEnd
+  const ipv6CatchAll = regexStart + '(\\[?(?:[0-9a-f]*:[0-9:a-f]+)\\]?)' + regexEnd
   res.push(['redirect', asRegexObj ? new RegExp(ipv6CatchAll, 'i') : ipv6CatchAll, 5])
 
   return res
