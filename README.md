@@ -37,4 +37,4 @@ Raise and upvote features in [Discussions](https://github.com/OllieJC/no-direct-
 
 ## Version
 
-0.2.5
+0.2.6

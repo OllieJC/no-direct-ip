@@ -18,7 +18,7 @@ const intToIp4 = int => [
   (int >>> 24) & 0xFF, (int >>> 16) & 0xFF, (int >>> 8) & 0xFF, int & 0xFF
 ].join('.')
 
-const calculateCidrIPv4Range = cidr => {
+export const calculateCidrIPv4Range = cidr => {
   const [range, bits = 32] = cidr.split('/')
   const mask = ~(2 ** (32 - bits) - 1)
   return [intToIp4(ip4ToInt(range) & mask), intToIp4(ip4ToInt(range) | ~mask)]
@@ -59,7 +59,7 @@ function cidrIPv4ToRegexString (cidr) {
 }
 
 export function cidrToRegex (cidr) {
-  let mask = 0
+  let mask = null
   let ip = ''
 
   if (cidr.indexOf('/') > -1) {
@@ -73,13 +73,13 @@ export function cidrToRegex (cidr) {
 
   if (cidr.indexOf(':') > -1) {
     // IPv6
-    if (mask === 0) { mask = 128 }
+    if (mask == null) { mask = 128 }
     const ipv6 = ip.split(':')
 
     res += '\\[?'
     switch (mask) {
       case 128:
-        res += '[0:]+:0*' + ipv6[ipv6.length - 1]
+        res += ipv6.join(':').replace('::', '[0:]+')
         break
       case 8:
         res += ipv6[0][0] + ipv6[0][1] + '[a-f0-9]+:[a-f0-9:]+'
@@ -91,11 +91,9 @@ export function cidrToRegex (cidr) {
     res += '\\]?'
   } else {
     // IPv4
-    if (mask === 0) { mask = 32 }
+    if (mask == null) { mask = 32 }
     const ipv4 = ip.split('.')
     switch (mask) {
-      case 0:
-        break
       case 8:
         res += ipv4[0] + '\\.'
         res += anyIPv4Octet + '\\.' + anyIPv4Octet + '\\.' + anyIPv4Octet

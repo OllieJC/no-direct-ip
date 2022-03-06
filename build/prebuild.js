@@ -13,6 +13,7 @@ const package3files = [
 
 const allFiles = [
   'background/rules.js',
+  'background/utils.js',
   'LICENSE',
   'icons/*',
   'resources/*',

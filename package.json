@@ -1,13 +1,14 @@
 {
   "name": "no-direct-ip",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Block directly entered, external or public IP v4 and v6 addresses",
   "scripts": {
     "test": "jest",
     "lint": "eslint background/ resources/",
     "fix": "eslint --fix background/ resources/",
-    "pack-v2": "node ./build/script.js -v2 && npm-pack-zip --ver --src build/v2/ --dst build/v2/",
-    "pack-v3": "node ./build/script.js -v3 && npm-pack-zip --ver --src build/v3/ --dst build/v3/"
+    "pack-v2": "node ./build/prebuild.js -v2 && npm-pack-zip --ver --src build/v2/ --dst build/v2/ && node ./build/postbuild.js -v2",
+    "pack-v3": "node ./build/prebuild.js -v3 && npm-pack-zip --ver --src build/v3/ --dst build/v3/ && node ./build/postbuild.js -v3",
+    "build": "npm run pack-v2 && npm run pack-v3"
   },
   "repository": {
     "type": "git",

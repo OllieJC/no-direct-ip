@@ -2,7 +2,9 @@
 
 import * as rules from './rules.js'
 
-export function checkIp (details) {
+const globalIPRules = rules.getRules(true)
+
+export function checkIp (details, b) {
   const url = new URL(details.url)
   const hostname = url.hostname
 
@@ -13,12 +15,11 @@ export function checkIp (details) {
       !/\.[a-z]/i.test(hostname) || hostname.indexOf(':') > -1
     )
   ) {
-    const ipRules = rules.getRules(true)
-    for (let i = 0; i < ipRules.length; i++) {
-      if (ipRules[i][1].test(hostname)) {
-        if (ipRules[i][0] === 'allow') {
+    for (let i = 0; i < globalIPRules.length; i++) {
+      if (globalIPRules[i][1].test(hostname)) {
+        if (globalIPRules[i][0] === 'allow') {
           break
-        } else if (ipRules[i][0] === 'redirect') {
+        } else if (globalIPRules[i][0] === 'redirect') {
           cancel = true
           break
         }
@@ -28,8 +29,9 @@ export function checkIp (details) {
 
   if (cancel) {
     console.log(`no-direct-ip: blocked access to: ${hostname}`)
-    if (typeof (browser) !== 'undefined') {
-      const url = browser.runtime.getURL('resources/blocked.html?hostname=' + hostname)
+    const hasBrowser = typeof (browser) !== 'undefined'
+    if (hasBrowser || typeof (b) !== 'undefined') {
+      const url = (hasBrowser ? browser : b).runtime.getURL('resources/blocked.html?hostname=' + hostname)
       return { redirectUrl: url }
     }
   }

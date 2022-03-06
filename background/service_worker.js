@@ -1,14 +1,7 @@
 /* global browser, chrome, module */
 
 import * as rules from './rules.js'
-
-function trim (str, ch) {
-  let start = 0
-  let end = str.length
-  while (start < end && str[start] === ch) { ++start }
-  while (end > start && str[end - 1] === ch) { --end }
-  return (start > 0 || end < str.length) ? str.substring(start, end) : str
-}
+import * as utils from './utils.js'
 
 rules.getRules().forEach(function (i, n) {
   const id = n + 1
@@ -27,7 +20,7 @@ rules.getRules().forEach(function (i, n) {
               }
             : { type: 'allow' }),
           condition: {
-            regexFilter: trim(trim(i[1], 'i'), '/'),
+            regexFilter: utils.trimListOfCharacters(i[1], ['i', '/']),
             resourceTypes: ['main_frame']
           }
         }

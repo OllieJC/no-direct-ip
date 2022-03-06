@@ -39,3 +39,25 @@ describe('checkIp tests', () => {
     }
   })
 })
+
+describe('with browser tests', () => {
+  const browser = {}
+  browser.runtime = {}
+  browser.runtime.getURL = function (t) {
+    return t
+  }
+  browser.webRequest = {}
+  browser.webRequest.onBeforeRequest = {}
+  browser.webRequest.onBeforeRequest.addListener = function (f, u, p) {
+    return true
+  }
+
+  const consoleSpy = jest.spyOn(console, 'log');
+
+  test('external IP should result in a redirected request', () => {
+    expect(background.checkIp({ url: 'https://1.1.1.1' }, browser)).toEqual(
+      { "redirectUrl": "resources/blocked.html?hostname=1.1.1.1" }
+    )
+    expect(consoleSpy).toHaveBeenCalledWith('no-direct-ip: blocked access to: 1.1.1.1')
+  })
+})
