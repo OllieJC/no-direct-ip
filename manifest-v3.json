@@ -12,7 +12,9 @@
     "rule_resources" : []
   },
   "permissions": [
-    "declarativeNetRequest"
+    "declarativeNetRequest",
+    "search",
+    "storage"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -21,6 +23,7 @@
     "service_worker": "background/service_worker.js",
     "type": "module"
   },
+  "options_page": "resources/options.html",
   "minimum_chrome_version": "92",
   "web_accessible_resources": [
     {

@@ -9,13 +9,22 @@
     "96": "icons/block.svg"
   },
   "permissions": [
-    "webRequest", "webRequestBlocking", "<all_urls>"
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "search",
+    "storage"
   ],
   "background": {
     "page": "background/page.html"
   },
+  "options_ui": {
+    "page": "resources/options.html",
+    "browser_style": true
+  },
   "browser_specific_settings": {
     "gecko": {
+      "id": "no-direct-ip@olliejc.uk",
       "strict_min_version": "68.0"
     }
   },

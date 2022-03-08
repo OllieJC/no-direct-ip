@@ -1,6 +1,6 @@
 {
   "name": "no-direct-ip",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "Block directly entered, external or public IP v4 and v6 addresses",
   "scripts": {
     "test": "jest",

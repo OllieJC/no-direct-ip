@@ -1,6 +1,7 @@
 /* global browser, module */
 
 import * as rules from './rules.js'
+import * as utils from './utils.js'
 
 const globalIPRules = rules.getRules(true)
 
@@ -29,9 +30,11 @@ export function checkIp (details, b) {
 
   if (cancel) {
     console.log(`no-direct-ip: blocked access to: ${hostname}`)
-    const hasBrowser = typeof (browser) !== 'undefined'
-    if (hasBrowser || typeof (b) !== 'undefined') {
-      const url = (hasBrowser ? browser : b).runtime.getURL('resources/blocked.html?hostname=' + hostname)
+    if (typeof (b) === 'undefined') {
+      b = utils.getBrowser()
+    }
+    if (b !== null) {
+      const url = b.runtime.getURL('resources/blocked.html?hostname=' + hostname)
       return { redirectUrl: url }
     }
   }
@@ -39,8 +42,8 @@ export function checkIp (details, b) {
   return { cancel: cancel }
 }
 
-if (typeof (browser) !== 'undefined') {
-  browser.webRequest.onBeforeRequest.addListener(
+if (utils.getBrowser() !== null) {
+  utils.getBrowser().webRequest.onBeforeRequest.addListener(
     checkIp,
     { urls: ['<all_urls>'] },
     ['blocking']

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html class="in-frame">
+  <head>
+    <meta charset="utf-8"/>
+    <style media="screen">
+      @media (prefers-color-scheme: dark) {
+        html:not(.in-frame) {
+          background-color: #000;
+        }
+        html:not(.in-frame) * {
+          color: #cecece;
+        }
+      }
+      html.in-frame h1,
+      html.in-frame footer,
+      .hidden { display: none; }
+      .container {
+        padding: 1em;
+      }
+      h1 {
+        margin: 0 0 0.5em 0;
+        font-size: 3em;
+      }
+      h2 { margin: 0 }
+      footer { margin: 2em 0 }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="browser-style">
+        <h1>no-direct-ip</h1>
+        <div class="form__field">
+    			<h2>
+            <label class="form__label" for="blockedAction" id="h2BlockedAction"></label>
+          </h2>
+    			<p class="form__hint" id="lblForBlockedAction">
+    			</p>
+          <div>
+            <input type="radio" id="op1" name="blockedAction" value="page" checked="checked" />
+            <label for="op1" id="op1lbl"></label>
+          </div>
+          <div>
+            <input type="radio" id="op2" name="blockedAction" value="search" />
+            <label for="op2" id="op2lbl"></label>
+          </div>
+        </div>
+      </div>
+      <pre id="preDebug" class="hidden"></pre>
+      <footer>
+        <a href="https://github.com/OllieJC/no-direct-ip">no-direct-ip</a>
+      </footer>
+    </div>
+    <script src="shared.js"></script>
+    <script src="translations.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
